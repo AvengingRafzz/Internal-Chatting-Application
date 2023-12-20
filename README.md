@@ -37,6 +37,11 @@ javac ChatServer.java
 java ChatServer
 
 
+## JDBC Connector
+
+Add jar file of mysql connector to your project libraries to establish a connection with the database.
+Download the jar file from offiicial website of MySql or directly during installation.
+
 ## Compile and Run the Client
 
 javac ChatClient.java
