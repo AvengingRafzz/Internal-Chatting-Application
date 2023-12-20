@@ -1,36 +1,25 @@
-import javax.swing.*;
-import java.awt.*;
-import java.io.*;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
 
-public class ChatServerGUI {
-    private JFrame frame;
-    private JTextArea chatArea;
+public class ChatServer {
     private ServerSocket serverSocket;
     private ArrayList<ClientHandler> clients = new ArrayList<>();
 
-    public ChatServerGUI() {
-        frame = new JFrame("Chat Application - Server");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setLayout(new BorderLayout());
-        frame.setBounds(900, 150, 400, 500);
-
-        chatArea = new JTextArea();
-        chatArea.setEditable(false);
-        JScrollPane scrollPane = new JScrollPane(chatArea);
-        frame.add(scrollPane, BorderLayout.CENTER);
-
+    public ChatServer() {
         try {
-            // Create a server socket and listen for incoming client connections on port 2211
+            // Create a server socket and listen for incoming client connections on port
+            // 2211
             serverSocket = new ServerSocket(2211);
-            chatArea.append("Server started. Waiting for clients...\n");
+            System.out.println("Server started. Waiting for clients...");
 
             while (true) {
                 // Accept a new client connection
                 Socket clientSocket = serverSocket.accept();
-                chatArea.append("Client connected: " + clientSocket.getInetAddress() + "\n");
+                System.out.println("Client connected: " + clientSocket.getInetAddress());
 
                 // Create a new client handler for the connected client
                 ClientHandler clientHandler = new ClientHandler(clientSocket);
@@ -43,18 +32,11 @@ public class ChatServerGUI {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-        frame.setVisible(true);
     }
 
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                // Create and start the server GUI on the Swing event dispatch thread
-                new ChatServerGUI();
-            }
-        });
+        // Create and start the server
+        new ChatServer();
     }
 
     // Inner class to handle communication with each connected client
@@ -77,7 +59,7 @@ public class ChatServerGUI {
                 while (true) {
                     // Read messages sent by the client
                     String message = dis.readUTF();
-                    chatArea.append("Client: " + message + "\n");
+                    System.out.println("Client: " + message);
 
                     // Broadcast the received message to all connected clients
                     for (ClientHandler client : clients) {
