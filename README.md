@@ -1,21 +1,75 @@
-# Internal-Chatting-Application
-This is a second year engineering project created by my team using Java.
-The technologies used in this are:
-1) Core Java
-2) Socket Programming
-3) Java Swing
-4) JDBC (Java DataBase Connection)
+# Java Chatting Application
 
-# To run this application follow the steps:
-1) Install and setup JDK.
-2) Install and setup MySQL.
-3) Download the jar file connector.
-4) Open the folder in VSCode.
-5) Under Java Projects Section, Referenced libraries add the connector.
-6) In MySQL setup a database with the name chatting_application.
-7) Create a table in the database with the name login_info with three columns: Name, UserID, Password.
-8) Now you are ready to run the project.
+## Overview
 
-# Project Credits:
-Rafan R. Nadiadwala
-https://www.linkedin.com/in/rafan-nadiadwala-062b70262
+This is a simple console-based chatting application implemented in Java. The program allows users to connect to a server, log in, and engage in real-time chat with other users. The application uses JDBC and MySQL for creating a login database.
+
+
+## Features
+
+- User-friendly console interface.
+- Client-server architecture for multi-user communication.
+- User authentication using JDBC and MySQL for secure access.
+- Real-time messaging between connected clients.
+- Graceful handling of client disconnections.
+- Dynamic updating of the user list.
+
+
+## Prerequisites
+
+- Java Development Kit (JDK)
+- MySQL Database
+- Basic understanding of Java socket programming, JDBC, and MySQL
+
+
+## Usage
+
+
+### Setup MySQL Database
+
+1. Create a MySQL database named `chatting_application`.
+2. Create a table named `login_info` table with columns `Name varchar(50), UserID varchar(50), Password varchar(50)`.
+
+
+### Compile and Run the Server
+
+javac ChatServer.java
+java ChatServer
+
+
+## Compile and Run the Client
+
+javac ChatClient.java
+java ChatClient
+
+
+## Follow On-Screen Instructions:
+
+Start the server and specify the port.
+Run multiple instances of the client, providing a username and connecting to the server.
+Engage in real-time chat with other connected users.
+
+
+## Error Handling
+
+The application handles common errors such as invalid input, connection issues, etc.
+Provides appropriate messages for errors and guides users to enter valid information.
+
+
+## Contributing
+
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+Please make sure to update tests as appropriate.
+
+
+## Limitations
+
+The application assumes a local MySQL setup for user authentication.
+The chat application focuses on simplicity and real-time messaging without advanced features such as file sharing or multimedia.
+Feel free to contribute and enhance the functionality of the chatting application!
+
+
+## Project Credits:
+
+Rafan R. Nadiadwala: https://www.linkedin.com/in/rafan-nadiadwala-062b70262
