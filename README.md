@@ -33,8 +33,8 @@ This is a simple console-based chatting application implemented in Java. The pro
 
 ### Compile and Run the Server
 
-javac ChatServer.java
-java ChatServer
+1. javac ChatServer.java
+2. java ChatServer
 
 
 ## JDBC Connector
